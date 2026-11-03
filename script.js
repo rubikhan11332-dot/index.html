@@ -12,15 +12,21 @@ const WHATSAPP_NUMBER = "923056636790";
 // ===============================
 
 const products = [
-  {
-    id: 1,
-    name: "Glow Face Serum",
-    category: "Beauty",
-    price: 1299,
-    oldPrice: 1699,
-    stock: true,
-    image: "https://placehold.co/600x600/f3e8ee/222?text=Glow+Serum"
-  },
+ {
+  id: 1,
+  name: "Back Posture Corrector Belt",
+  category: "Health",
+  price: 1199,
+  oldPrice: 1500,
+  stock: true,
+  image: "WhatsApp Image 2026-11-03 at 9.42.55 AM (1).jpeg",
+  images: [
+    "WhatsApp Image 2026-11-03 at 9.42.55 AM (1).jpeg",
+    "WhatsApp Image 2026-11-03 at 9.42.55 AM.jpeg",
+    "WhatsApp Image 2026-11-03 at 9.42.56 AM (1).jpeg",
+    "WhatsApp Image 2026-11-03 at 9.42.56 AM.jpeg"
+  ]
+},
   {
     id: 2,
     name: "Fitness Resistance Band",
