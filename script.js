@@ -42,7 +42,7 @@ const products = [
     "Screenshot_20261104_182716_ChatGPT.jpg.jpeg"
   ]
 },
-  {
+ {
   id: 3,
   name: "Adjustable Knee Support Brace",
   category: "health",
@@ -56,30 +56,23 @@ const products = [
     "WhatsApp Image 2026-11-04 at 7.41.36 AM.jpeg",
     "WhatsApp Image 2026-11-04 at 7.41.37 AM.jpeg"
   ],
-  description: `Adjustable Knee Support Brace – Comfort, Stability & Protection.
+  description: `PakBuy Adjustable Knee Support Brace provides comfortable compression, adjustable support and stability during daily activities.
 
-Give your knees the support they deserve with PakBuy Adjustable Knee Support Brace. Designed to provide comfortable compression, adjustable support, and added stability during daily activities.
+  Features:
+  - Adjustable straps for a customized fit.
+  - Open Patella Design for kneecap comfort.
+  - Flexible and breathable material.
+  - Supports knees during walking and exercise.
+  - Easy to wear and adjust.
 
-Key Features:
-1. Adjustable Compression with customized straps.
-2. Open Patella Design for comfortable kneecap support.
-3. Knee Joint Support during walking and physical activities.
-4. Comfortable and Breathable Material.
-5. Easy to Wear with adjustable hook-and-loop straps.
+  Specifications:
+  Brand: PakBuy
+  Type: Knee Support Brace
+  Design: Open Patella
+  Closure: Hook & Loop Straps
+  Quantity: 1 Piece
 
-Suitable for people who need additional knee support during everyday activities.
-
-This product is a supportive aid and does not cure medical conditions. Consult a healthcare professional for persistent pain, swelling, or existing injuries.
-
-Product Specifications:
-Brand: PakBuy
-Product Type: Knee Support / Knee Brace
-Design: Open Patella
-Closure: Adjustable Hook & Loop Straps
-Quantity: 1 Piece
-
-Why Choose PakBuy?
-Practical products for your everyday comfort and lifestyle.`
+  Suitable for everyday knee support. It does not cure injuries or medical conditions. Consult a healthcare professional for persistent pain or swelling.`
 },
   {
     id: 4,
