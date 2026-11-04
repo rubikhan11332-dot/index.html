@@ -1099,4 +1099,106 @@ img {
         font-size: 27px;
     }
 
+}/* ===============================
+   PAKBUY PRODUCT IMAGE GALLERY
+================================ */
+
+.product-gallery {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.85);
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.product-gallery.active {
+    display: flex;
+}
+
+.gallery-content {
+    position: relative;
+    background: #fff;
+    width: 100%;
+    max-width: 650px;
+    padding: 25px;
+    border-radius: 14px;
+    text-align: center;
+}
+
+.gallery-content h2 {
+    font-size: 21px;
+    margin-bottom: 20px;
+}
+
+.gallery-close {
+    position: absolute;
+    top: 8px;
+    right: 15px;
+    border: none;
+    background: none;
+    font-size: 32px;
+    cursor: pointer;
+}
+
+.gallery-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#gallery-main-image {
+    width: 100%;
+    max-width: 430px;
+    height: 380px;
+    object-fit: contain;
+}
+
+.gallery-arrow {
+    border: none;
+    background: #172554;
+    color: white;
+    padding: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.gallery-thumbnails {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.gallery-thumbnail {
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+    border: 2px solid #ddd;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.gallery-thumbnail.selected {
+    border-color: #e63946;
+}
+
+@media (max-width: 600px) {
+
+    .gallery-content {
+        padding: 15px;
+    }
+
+    #gallery-main-image {
+        height: 280px;
+    }
+
+    .gallery-arrow {
+        padding: 8px;
+    }
+
 }
