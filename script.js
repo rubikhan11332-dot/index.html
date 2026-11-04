@@ -43,14 +43,44 @@ const products = [
   ]
 },
   {
-    id: 3,
-    name: "Kitchen Storage Set",
-    category: "Household",
-    price: 1599,
-    oldPrice: 1999,
-    stock: true,
-    image: "https://placehold.co/600x600/edf4e8/222?text=Storage+Set"
-  },
+  id: 3,
+  name: "Adjustable Knee Support Brace",
+  category: "health",
+  price: 1100,
+  oldPrice: 1400,
+  stock: true,
+  image: "WhatsApp Image 2026-11-04 at 7.41.36 AM (1).jpeg",
+  images: [
+    "WhatsApp Image 2026-11-04 at 7.41.36 AM (1).jpeg",
+    "WhatsApp Image 2026-11-04 at 7.41.36 AM (2).jpeg",
+    "WhatsApp Image 2026-11-04 at 7.41.36 AM.jpeg",
+    "WhatsApp Image 2026-11-04 at 7.41.37 AM.jpeg"
+  ],
+  description: `Adjustable Knee Support Brace – Comfort, Stability & Protection.
+
+Give your knees the support they deserve with PakBuy Adjustable Knee Support Brace. Designed to provide comfortable compression, adjustable support, and added stability during daily activities.
+
+Key Features:
+1. Adjustable Compression with customized straps.
+2. Open Patella Design for comfortable kneecap support.
+3. Knee Joint Support during walking and physical activities.
+4. Comfortable and Breathable Material.
+5. Easy to Wear with adjustable hook-and-loop straps.
+
+Suitable for people who need additional knee support during everyday activities.
+
+This product is a supportive aid and does not cure medical conditions. Consult a healthcare professional for persistent pain, swelling, or existing injuries.
+
+Product Specifications:
+Brand: PakBuy
+Product Type: Knee Support / Knee Brace
+Design: Open Patella
+Closure: Adjustable Hook & Loop Straps
+Quantity: 1 Piece
+
+Why Choose PakBuy?
+Practical products for your everyday comfort and lifestyle.`
+},
   {
     id: 4,
     name: "Daily Wellness Bottle",
