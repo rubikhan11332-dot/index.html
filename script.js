@@ -1101,3 +1101,101 @@ renderCart();
 renderCheckout();
 
 updateCartCount();
+// ===============================
+// PAKBUY PRODUCT IMAGE GALLERY
+// ===============================
+
+let currentGalleryImages = [];
+let currentGalleryIndex = 0;
+
+function openProductGallery(productId) {
+
+    const product = products.find(p => p.id === productId);
+
+    if (!product) return;
+
+    currentGalleryImages = product.images || [product.image];
+
+    currentGalleryIndex = 0;
+
+    document.getElementById("gallery-title").textContent = product.name;
+
+    document.getElementById("product-gallery").classList.add("active");
+
+    showGalleryImage();
+}
+
+function showGalleryImage() {
+
+    const mainImage = document.getElementById("gallery-main-image");
+
+    const thumbnails = document.getElementById("gallery-thumbnails");
+
+    mainImage.src = currentGalleryImages[currentGalleryIndex];
+
+    thumbnails.innerHTML = currentGalleryImages.map((image, index) => `
+
+        <img
+            src="${image}"
+            class="gallery-thumbnail ${index === currentGalleryIndex ? "selected" : ""}"
+            onclick="selectGalleryImage(${index})"
+            alt="Product thumbnail"
+        >
+
+    `).join("");
+}
+
+function selectGalleryImage(index) {
+
+    currentGalleryIndex = index;
+
+    showGalleryImage();
+}
+
+function nextGalleryImage() {
+
+    currentGalleryIndex =
+        (currentGalleryIndex + 1) % currentGalleryImages.length;
+
+    showGalleryImage();
+}
+
+function previousGalleryImage() {
+
+    currentGalleryIndex =
+        (currentGalleryIndex - 1 + currentGalleryImages.length)
+        % currentGalleryImages.length;
+
+    showGalleryImage();
+}
+
+function closeProductGallery() {
+
+    document.getElementById("product-gallery").classList.remove("active");
+}
+
+document.getElementById("gallery-close").addEventListener(
+    "click",
+    closeProductGallery
+);
+
+document.getElementById("gallery-next").addEventListener(
+    "click",
+    nextGalleryImage
+);
+
+document.getElementById("gallery-prev").addEventListener(
+    "click",
+    previousGalleryImage
+);
+
+document.getElementById("product-gallery").addEventListener(
+    "click",
+    function(event) {
+
+        if (event.target.id === "product-gallery") {
+            closeProductGallery();
+        }
+
+    }
+);
