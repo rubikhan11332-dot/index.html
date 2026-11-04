@@ -15,7 +15,7 @@ const products = [
  {
   id: 1,
   name: "Back Posture Corrector Belt",
-  category: "Health",
+  category: "health",
   price: 1199,
   oldPrice: 1500,
   stock: true,
