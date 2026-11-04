@@ -1347,3 +1347,21 @@ img {
     border-radius: 30px;
     border: 1px solid rgba(255, 255, 255, 0.20);
 }
+/* PAKBUY HERO IMAGE SIZE FIX */
+
+.hero-image {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image img {
+    display: block;
+    width: 100%;
+    max-width: 520px;
+    height: auto;
+    max-height: 460px;
+    object-fit: contain;
+    border-radius: 20px;
+}
