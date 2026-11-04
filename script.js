@@ -28,14 +28,20 @@ const products = [
   ]
 },
   {
-    id: 2,
-    name: "Fitness Resistance Band",
-    category: "Fitness",
-    price: 899,
-    oldPrice: 1199,
-    stock: true,
-    image: "https://placehold.co/600x600/e8eef7/222?text=Fitness+Band"
-  },
+  id: 2,
+  name: "Silicone Heel protector",
+  category: "Health",
+  price: 499,
+  oldPrice: 600,
+  stock: true,
+  image: "file_00000000f3d88207bbc1c4193ca347e2.png",
+  images: [
+    "file_00000000f3d88207bbc1c4193ca347e2.png",
+    "file_0000000032708210b2037f6483df5254.png",
+    "silicone-heel-anti-crack-sets-500x500-1_800x_1697c929-b9ad-4483-838e-ee522d2c8778.jpeg",
+    "Screenshot_20261104_182716_ChatGPT.jpg.jpeg"
+  ]
+},
   {
     id: 3,
     name: "Kitchen Storage Set",
