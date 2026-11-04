@@ -45,7 +45,7 @@ const products = [
   {
   id: 3,
   name: "Adjustable Knee Support Brace",
-  category: "health",
+  category: "Health",
   price: 1100,
   oldPrice: 1400,
   stock: true,
