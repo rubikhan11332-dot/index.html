@@ -1303,3 +1303,21 @@ img {
     }
 
 }
+/* HERO FEATURES */
+
+.hero-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.hero-features span {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.10);
+    padding: 10px 15px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.20);
+}
