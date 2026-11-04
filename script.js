@@ -447,11 +447,13 @@ function renderProducts() {
               ${discount}% OFF
             </span>
 
-            <img
-              class="product-image"
-              src="${product.image}"
-              alt="${product.name}"
-            >
+           <img
+    class="product-image"
+    src="${product.image}"
+    alt="${product.name}"
+    onclick="openProductGallery(${product.id})"
+    style="cursor: zoom-in;"
+>
 
           </div>
 
