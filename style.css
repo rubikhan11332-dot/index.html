@@ -26,7 +26,33 @@
     padding: 0;
     box-sizing: border-box;
 }
+/* PAKBUY PREMIUM HERO IMAGE */
 
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.hero-text {
+    flex: 1;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 20px;
+}
 html {
     scroll-behavior: smooth;
 }
