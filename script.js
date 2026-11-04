@@ -49,30 +49,30 @@ const products = [
   price: 1100,
   oldPrice: 1400,
   stock: true,
-  image: "WhatsApp Image 2026-11-04 at 7.41.36 AM (1).jpeg",
+  image: "WhatsApp Image 2026-11-04 at 7.41.36 AM.jpeg",
   images: [
+    "WhatsApp Image 2026-11-04 at 7.41.36 AM.jpeg",
     "WhatsApp Image 2026-11-04 at 7.41.36 AM (1).jpeg",
     "WhatsApp Image 2026-11-04 at 7.41.36 AM (2).jpeg",
-    "WhatsApp Image 2026-11-04 at 7.41.36 AM.jpeg",
     "WhatsApp Image 2026-11-04 at 7.41.37 AM.jpeg"
   ],
   description: `PakBuy Adjustable Knee Support Brace provides comfortable compression, adjustable support and stability during daily activities.
 
-  Features:
-  - Adjustable straps for a customized fit.
-  - Open Patella Design for kneecap comfort.
-  - Flexible and breathable material.
-  - Supports knees during walking and exercise.
-  - Easy to wear and adjust.
+Features:
+- Adjustable straps for a customized fit.
+- Open Patella Design for kneecap comfort.
+- Flexible and breathable material.
+- Supports knees during walking and exercise.
+- Easy to wear and adjust.
 
-  Specifications:
-  Brand: PakBuy
-  Type: Knee Support Brace
-  Design: Open Patella
-  Closure: Hook & Loop Straps
-  Quantity: 1 Piece
+Specifications:
+Brand: PakBuy
+Type: Knee Support Brace
+Design: Open Patella
+Closure: Hook & Loop Straps
+Quantity: 1 Piece
 
-  Suitable for everyday knee support. It does not cure injuries or medical conditions. Consult a healthcare professional for persistent pain or swelling.`
+Suitable for everyday knee support. It does not cure injuries or medical conditions. Consult a healthcare professional for persistent pain or swelling.`
 },
   {
     id: 4,
