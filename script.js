@@ -51,7 +51,7 @@ const products = [
   stock: true,
   image: "WhatsApp Image 2026-11-04 at 7.41.36 AM.jpeg",
   images: [
-    "WhatsApp Image 2026-11-04 at 7.41.36 AM.jpeg",
+    "WhatsApp Image 2026-11-04 at 7.41.37 AM.jpeg",
     "WhatsApp Image 2026-11-04 at 7.41.36 AM (1).jpeg",
     "WhatsApp Image 2026-11-04 at 7.41.36 AM (2).jpeg",
     "WhatsApp Image 2026-11-04 at 7.41.37 AM.jpeg"
