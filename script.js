@@ -75,7 +75,7 @@ const products = [
   {
     id: 7,
     name: "Posture Support Belt",
-    category: "Fitness",
+    category: "Health",
     price: 1799,
     oldPrice: 2299,
     stock: true,
