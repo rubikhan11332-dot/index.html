@@ -1412,13 +1412,14 @@ img {
         flex: 1 1 100% !important;
     }
 }
-/* PAKBUY HERO - FORCE BIGGER IMAGE */
+/* PAKBUY HERO - FINAL */
 
 .hero .container.hero-content {
-    width: min(1400px, 94%) !important;
+    width: min(1300px, 92%) !important;
     max-width: none !important;
+    margin: 0 auto !important;
     display: grid !important;
-    grid-template-columns: 1.6fr 1fr !important;
+    grid-template-columns: 1.3fr 1fr !important;
     align-items: center !important;
     gap: 40px !important;
 }
@@ -1426,22 +1427,22 @@ img {
 .hero .hero-image {
     width: 100% !important;
     max-width: none !important;
-    flex: none !important;
     display: block !important;
 }
 
 .hero .hero-image img {
+    display: block !important;
     width: 100% !important;
-    max-width: none !important;
+    max-width: 100% !important;
     height: auto !important;
     object-fit: contain !important;
     border-radius: 20px !important;
+    transform: none !important;
 }
 
 .hero .hero-text {
     width: 100% !important;
     max-width: none !important;
-    flex: none !important;
 }
 
 @media (max-width: 900px) {
