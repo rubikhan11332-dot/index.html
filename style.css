@@ -1418,7 +1418,7 @@ img {
     width: min(1400px, 94%) !important;
     max-width: none !important;
     display: grid !important;
-    grid-template-columns: 1.35fr 1fr !important;
+    grid-template-columns: 1.6fr 1fr !important;
     align-items: center !important;
     gap: 40px !important;
 }
