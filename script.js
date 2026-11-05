@@ -626,7 +626,27 @@ function getCartTotal() {
     0
   );
 }
+// ===============================
+// DELIVERY CHARGES
+// ===============================
 
+const FREE_DELIVERY_LIMIT = 10000;
+const DELIVERY_CHARGE = 300;
+
+function getDeliveryCharge() {
+
+  const subtotal = getCartTotal();
+
+  if (subtotal === 0 || subtotal >= FREE_DELIVERY_LIMIT) {
+    return 0;
+  }
+
+  return DELIVERY_CHARGE;
+}
+
+function getGrandTotal() {
+  return getCartTotal() + getDeliveryCharge();
+}
 
 // ===============================
 // RENDER CART
