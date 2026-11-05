@@ -363,145 +363,43 @@
 
 
 <!-- ================= CHECKOUT ================= -->
+<section class="checkout-section" id="checkout">
+    <div class="container checkout-layout">
 
-<section class="section checkout-section" id="checkout">
-
-    <div class="container checkout-grid">
-
-        <div>
-
-            <div class="section-heading left">
-
-                <span>CHECKOUT</span>
-
-                <h2>
-                    Complete Your Order
-                </h2>
-
-            </div>
-
+        <div class="checkout-left">
 
             <form id="checkout-form">
 
-                <div class="form-group">
-
-                    <label>
-                        Full Name
-                    </label>
-
-                    <input
-                        type="text"
-                        id="customer-name"
-                        required
-                        placeholder="Your full name"
-                    >
-
+                <div class="co-head">
+                    <h2>Contact</h2>
                 </div>
 
+                <input type="tel" id="customer-phone" placeholder="Mobile number" required>
+                <input type="email" id="customer-email" placeholder="Email (optional)">
 
-                <div class="form-group">
+                <h2 class="co-title">Delivery</h2>
 
-                    <label>
-                        Phone Number
-                    </label>
+                <input type="text" value="Pakistan" disabled>
+                <input type="text" id="customer-name" placeholder="Full name" required>
+                <input type="text" id="customer-address" placeholder="Address" required>
+                <input type="text" id="customer-city" placeholder="City" required>
 
-                    <input
-                        type="tel"
-                        id="customer-phone"
-                        required
-                        placeholder="03XX XXXXXXX"
-                    >
+                <h2 class="co-title">Payment</h2>
 
-                </div>
+                <select id="payment-method">
+                    <option value="Cash on Delivery">Cash on Delivery</option>
+                </select>
 
-
-                <div class="form-group">
-
-                    <label>
-                        Email
-                        <small>(Optional)</small>
-                    </label>
-
-                    <input
-                        type="email"
-                        id="customer-email"
-                        placeholder="your@email.com"
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        City
-                    </label>
-
-                    <input
-                        type="text"
-                        id="customer-city"
-                        required
-                        placeholder="Your city"
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Complete Address
-                    </label>
-
-                    <textarea
-                        id="customer-address"
-                        rows="4"
-                        required
-                        placeholder="House number, street, area..."
-                    ></textarea>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Payment Method
-                    </label>
-
-                    <select id="payment-method">
-
-                        <option>
-                            Cash on Delivery
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <button
-                    type="submit"
-                    class="btn primary-btn full-btn"
-                >
-                    Order on WhatsApp
-                </button>
-
-
-                <p class="form-note">
-                    Your order details will be prepared in
-                    WhatsApp for confirmation.
-                </p>
+                <button type="submit" class="co-submit">Complete Order</button>
 
             </form>
 
         </div>
 
+        <aside class="co-summary" id="checkout-summary"></aside>
 
-        <div
-            class="checkout-summary"
-            id="checkout-summary"
-        >
+    </div>
+</section>
 
             <!-- Checkout summary -->
 
