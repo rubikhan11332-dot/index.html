@@ -1451,3 +1451,55 @@ img {
         gap: 24px !important;
     }
 }
+/* DELIVERY SECTION */
+
+.delivery-section {
+    padding: 70px 0;
+    background: #f7f8fb;
+    text-align: center;
+}
+
+.delivery-section h2 {
+    font-size: 34px;
+    margin: 8px 0 6px;
+}
+
+.delivery-sub {
+    color: #666;
+    margin-bottom: 36px;
+}
+
+.delivery-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.delivery-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px 20px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+.delivery-card h3 {
+    margin-bottom: 10px;
+}
+
+.delivery-price {
+    font-size: 32px;
+    font-weight: 800;
+    color: #e63946;
+    margin-bottom: 8px;
+}
+
+.delivery-card span {
+    color: #666;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .delivery-cards {
+        grid-template-columns: 1fr;
+    }
+}
