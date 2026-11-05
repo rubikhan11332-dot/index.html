@@ -1384,3 +1384,31 @@ img {
     object-fit: contain;
     border-radius: 20px;
 }
+.hero img,
+.hero-content img,
+.hero-image img,
+.hero-visual img,
+.hero-banner img,
+.hero-right img,
+.hero-left img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+.hero-image,
+.hero-visual,
+.hero-banner {
+    flex: 1 1 55% !important;
+    width: 55% !important;
+    max-width: none !important;
+}
+
+@media (max-width: 768px) {
+    .hero-image,
+    .hero-visual,
+    .hero-banner {
+        width: 100% !important;
+        flex: 1 1 100% !important;
+    }
+}
