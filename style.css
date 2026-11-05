@@ -26,60 +26,62 @@
     padding: 0;
     box-sizing: border-box;
 }
-/* PAKBUY PREMIUM HERO IMAGE */
-/* PAKBUY HERO IMAGE - FINAL LAYOUT FIX */
+/* PAKBUY HERO IMAGE - BIGGER IMAGE FIX */
 
 .hero-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 30px;
+    gap: 40px;
     width: 100%;
 }
 
 .hero-text {
-    flex: 1 1 45%;
+    flex: 0 0 42%;
+    max-width: 42%;
     min-width: 0;
 }
 
 .hero-image {
-    flex: 1 1 55%;
-    width: 55%;
-    max-width: 750px;
+    flex: 1 1 58%;
     min-width: 0;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
 }
 
 .hero-image img {
     display: block;
     width: 100%;
-    max-width: 750px;
+    max-width: none;      /* 750px ki limit hata di */
     height: auto;
     object-fit: contain;
     border-radius: 20px;
+    transform: scale(1.1); /* image thori aur bari dikhane ke liye, zarurat na ho to hata dein */
+    transform-origin: center right;
 }
 
 @media (max-width: 768px) {
     .hero-content {
         flex-direction: column;
+        gap: 24px;
     }
 
     .hero-text,
     .hero-image {
-        width: 100%;
         flex: 1 1 100%;
+        max-width: 100%;
+        width: 100%;
+        justify-content: center;
     }
 
     .hero-image img {
         width: 100%;
         max-width: 100%;
+        transform: none;
     }
-   .hero-image img {
-     max-width: 100%; 
-      }
-   }
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -116,7 +118,6 @@ img {
     width: min(var(--container), 92%);
     margin: 0 auto;
 }
-
 /* =========================================================
    HEADER
    ========================================================= */
