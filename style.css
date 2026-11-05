@@ -1701,3 +1701,21 @@ img {
         padding: 28px 20px;
     }
 }
+.pay-info {
+    display: none;
+    background: #f0fdf4;
+    border: 1px solid #86efac;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.pay-info.show {
+    display: block;
+}
+
+.pay-info p {
+    margin: 2px 0;
+}
