@@ -1719,3 +1719,22 @@ img {
 .pay-info p {
     margin: 2px 0;
 }
+/* CHECKOUT FORM ORDER FIX */
+
+.checkout-left #checkout-form {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+}
+
+.checkout-left #checkout-form > * {
+    order: 0 !important;
+    float: none !important;
+    grid-column: auto !important;
+}
+
+.checkout-left #checkout-form input,
+.checkout-left #checkout-form select {
+    width: 100% !important;
+    max-width: 100% !important;
+}
