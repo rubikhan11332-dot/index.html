@@ -27,41 +27,56 @@
     box-sizing: border-box;
 }
 /* PAKBUY PREMIUM HERO IMAGE */
+/* PAKBUY HERO IMAGE - FINAL LAYOUT FIX */
 
 .hero-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 40px;
+    gap: 30px;
+    width: 100%;
 }
 
 .hero-text {
-    flex: 1;
+    flex: 1 1 45%;
+    min-width: 0;
 }
 
 .hero-image {
-    width: 100%;
-    max-width: 650px;
+    flex: 1 1 55%;
+    width: 55%;
+    max-width: 750px;
+    min-width: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
 }
 
 .hero-image img {
     display: block;
     width: 100%;
-    max-width: 650px;
+    max-width: 750px;
     height: auto;
-    aspect-ratio: 16 / 9;
     object-fit: contain;
     border-radius: 20px;
 }
 
 @media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column;
+    }
+
+    .hero-text,
     .hero-image {
+        width: 100%;
+        flex: 1 1 100%;
+    }
+
+    .hero-image img {
+        width: 100%;
         max-width: 100%;
     }
+}
 
     .hero-image img {
         max-width: 100%;
