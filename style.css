@@ -76,12 +76,7 @@
         width: 100%;
         max-width: 100%;
     }
-
-
-    .hero-image img {
-        max-width: 100%;
-    }
-
+   
 html {
     scroll-behavior: smooth;
 }
