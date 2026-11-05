@@ -630,7 +630,7 @@ function getCartTotal() {
 // DELIVERY CHARGES
 // ===============================
 
-const FREE_DELIVERY_LIMIT = 1000;
+const FREE_DELIVERY_LIMIT = 10000;
 const DELIVERY_CHARGE = 300;
 
 function getDeliveryCharge() {
