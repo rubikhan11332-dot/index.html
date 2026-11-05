@@ -1412,3 +1412,41 @@ img {
         flex: 1 1 100% !important;
     }
 }
+/* PAKBUY HERO - FORCE BIGGER IMAGE */
+
+.hero .container.hero-content {
+    width: min(1400px, 94%) !important;
+    max-width: none !important;
+    display: grid !important;
+    grid-template-columns: 1.35fr 1fr !important;
+    align-items: center !important;
+    gap: 40px !important;
+}
+
+.hero .hero-image {
+    width: 100% !important;
+    max-width: none !important;
+    flex: none !important;
+    display: block !important;
+}
+
+.hero .hero-image img {
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    object-fit: contain !important;
+    border-radius: 20px !important;
+}
+
+.hero .hero-text {
+    width: 100% !important;
+    max-width: none !important;
+    flex: none !important;
+}
+
+@media (max-width: 900px) {
+    .hero .container.hero-content {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+    }
+}
