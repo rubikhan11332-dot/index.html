@@ -15,7 +15,7 @@ const products = [
  {
   id: 1,
   name: "Back Posture Corrector Belt",
-  category: "health",
+  category: "Health",
   price: 1199,
   oldPrice: 1500,
   stock: true,
@@ -45,7 +45,7 @@ const products = [
  {
   id: 3,
   name: "Adjustable Knee Support Brace",
-  category: "health",
+  category: "Health",
   price: 1100,
   oldPrice: 1400,
   stock: true,
