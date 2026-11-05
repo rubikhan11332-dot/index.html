@@ -15,7 +15,7 @@ const products = [
  {
   id: 1,
   name: "Back Posture Corrector Belt",
-  category: "Health",
+  category: "health",
   price: 1199,
   oldPrice: 1500,
   stock: true,
@@ -45,7 +45,7 @@ const products = [
  {
   id: 3,
   name: "Adjustable Knee Support Brace",
-  category: "Health",
+  category: "health",
   price: 1100,
   oldPrice: 1400,
   stock: true,
@@ -630,7 +630,7 @@ function getCartTotal() {
 // DELIVERY CHARGES
 // ===============================
 
-const FREE_DELIVERY_LIMIT = 10000;
+const FREE_DELIVERY_LIMIT = 1000;
 const DELIVERY_CHARGE = 300;
 
 function getDeliveryCharge() {
@@ -761,11 +761,27 @@ function renderCart() {
     }).join("");
 
 
+  const subtotal = getCartTotal();
+  const delivery = getDeliveryCharge();
+
+  cartItems.innerHTML += `
+    <div class="cart-summary-lines">
+      <div class="summary-row">
+        <span>Subtotal</span>
+        <strong>${money(subtotal)}</strong>
+      </div>
+      <div class="summary-row">
+        <span>Delivery Charges</span>
+        <strong>${delivery === 0 ? "FREE" : money(delivery)}</strong>
+      </div>
+      ${delivery > 0
+        ? `<p class="free-delivery-note">Add ${money(FREE_DELIVERY_LIMIT - subtotal)} more for FREE delivery.</p>`
+        : ""}
+    </div>
+  `;
+
   if (cartTotal) {
-
-    cartTotal.textContent =
-      money(getCartTotal());
-
+    cartTotal.textContent = money(getGrandTotal());
   }
 }
 
@@ -776,77 +792,57 @@ function renderCart() {
 
 function renderCheckout() {
 
-  const summary =
-    document.getElementById(
-      "checkout-summary"
-    );
+  const summary = document.getElementById("checkout-summary");
 
   if (!summary) return;
 
-
   if (cart.length === 0) {
-
-    summary.innerHTML = `
-      <h3>Order Summary</h3>
-      <p>Your cart is empty.</p>
-    `;
-
+    summary.innerHTML = `<p class="co-empty">Your cart is empty.</p>`;
     return;
   }
 
-
-  let html =
-    "<h3>Order Summary</h3>";
-
+  let html = "";
 
   cart.forEach(item => {
 
-    const product =
-      products.find(
-        p => p.id === item.id
-      );
+    const product = products.find(p => p.id === item.id);
 
     if (!product) return;
 
-
     html += `
-
-      <div class="summary-row">
-
-        <span>
-          ${product.name} × ${item.quantity}
-        </span>
-
-        <strong>
-          ${money(
-            product.price *
-            item.quantity
-          )}
-        </strong>
-
+      <div class="co-item">
+        <div class="co-thumb">
+          <img src="${product.image}" alt="${product.name}">
+          <span class="co-qty">${item.quantity}</span>
+        </div>
+        <div class="co-name">${product.name}</div>
+        <div class="co-price">${money(product.price * item.quantity)}</div>
       </div>
-
     `;
-
   });
 
+  const delivery = getDeliveryCharge();
 
   html += `
-
-    <div class="summary-row summary-total">
-
-      <span>
-        Total
-      </span>
-
-      <strong>
-        ${money(getCartTotal())}
-      </strong>
-
+    <div class="co-line">
+      <span>Subtotal</span>
+      <span>${money(getCartTotal())}</span>
     </div>
 
-  `;
+    <div class="co-line">
+      <span>Shipping</span>
+      <span>${delivery === 0 ? "FREE" : money(delivery)}</span>
+    </div>
 
+    ${delivery > 0
+      ? `<p class="co-note">Add ${money(FREE_DELIVERY_LIMIT - getCartTotal())} more for FREE delivery.</p>`
+      : ""}
+
+    <div class="co-total">
+      <span>Total</span>
+      <strong>${money(getGrandTotal())}</strong>
+    </div>
+  `;
 
   summary.innerHTML = html;
 }
@@ -974,7 +970,11 @@ Products:
 
 ${productsText}
 
-Total: ${money(getCartTotal())}`;
+Subtotal: ${money(getCartTotal())}
+
+Delivery: ${getDeliveryCharge() === 0 ? "FREE" : money(getDeliveryCharge())}
+
+Total: ${money(getGrandTotal())}`;
 
 
       window.open(
@@ -1250,7 +1250,11 @@ document.getElementById("product-gallery").addEventListener(
 
     }
 );
+
+// ===============================
 // EASYPAISA INFO SHOW/HIDE
+// ===============================
+
 const paymentSelect = document.getElementById("payment-method");
 const easypaisaInfo = document.getElementById("easypaisa-info");
 
