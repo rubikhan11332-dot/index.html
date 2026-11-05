@@ -1250,3 +1250,19 @@ document.getElementById("product-gallery").addEventListener(
 
     }
 );
+// EASYPAISA INFO SHOW/HIDE
+const paymentSelect = document.getElementById("payment-method");
+const easypaisaInfo = document.getElementById("easypaisa-info");
+
+if (paymentSelect && easypaisaInfo) {
+
+  function toggleEasypaisaInfo() {
+    easypaisaInfo.classList.toggle(
+      "show",
+      paymentSelect.value === "Easypaisa"
+    );
+  }
+
+  paymentSelect.addEventListener("change", toggleEasypaisaInfo);
+  toggleEasypaisaInfo();
+}
