@@ -1,0 +1,1287 @@
+// ===============================
+// PAKBUY WEBSITE - JAVASCRIPT
+// ===============================
+
+// اپنا WhatsApp نمبر یہاں لکھیں
+// مثال: 923001234567
+const WHATSAPP_NUMBER = "923056636790";
+
+
+// ===============================
+// PRODUCTS
+// ===============================
+
+const products = [
+ {
+  id: 1,
+  name: "Back Posture Corrector Belt",
+  category: "health",
+  price: 1199,
+  oldPrice: 1500,
+  stock: true,
+  image: "WhatsApp Image 2026-11-03 at 9.42.55 AM (1).jpeg",
+  images: [
+    "WhatsApp Image 2026-11-03 at 9.42.55 AM (1).jpeg",
+    "WhatsApp Image 2026-11-03 at 9.42.55 AM.jpeg",
+    "WhatsApp Image 2026-11-03 at 9.42.56 AM (1).jpeg",
+    "WhatsApp Image 2026-11-03 at 9.42.56 AM.jpeg"
+  ]
+},
+  {
+  id: 2,
+  name: "Silicone Heel protector",
+  category: "Health",
+  price: 499,
+  oldPrice: 600,
+  stock: true,
+  image: "file_00000000f3d88207bbc1c4193ca347e2.png",
+  images: [
+    "file_00000000f3d88207bbc1c4193ca347e2.png",
+    "file_0000000032708210b2037f6483df5254.png",
+    "silicone-heel-anti-crack-sets-500x500-1_800x_1697c929-b9ad-4483-838e-ee522d2c8778.jpeg",
+    "Screenshot_20261104_182716_ChatGPT.jpg.jpeg"
+  ]
+},
+ {
+  id: 3,
+  name: "Adjustable Knee Support Brace",
+  category: "health",
+  price: 1100,
+  oldPrice: 1400,
+  stock: true,
+  image: "WhatsApp Image 2026-11-04 at 7.41.36 AM.jpeg",
+  images: [
+    "WhatsApp Image 2026-11-04 at 7.41.37 AM.jpeg",
+    "WhatsApp Image 2026-11-04 at 7.41.36 AM (1).jpeg",
+    "WhatsApp Image 2026-11-04 at 7.41.36 AM (2).jpeg",
+    "WhatsApp Image 2026-11-04 at 7.41.37 AM.jpeg"
+  ],
+  description: `PakBuy Adjustable Knee Support Brace provides comfortable compression, adjustable support and stability during daily activities.
+
+Features:
+- Adjustable straps for a customized fit.
+- Open Patella Design for kneecap comfort.
+- Flexible and breathable material.
+- Supports knees during walking and exercise.
+- Easy to wear and adjust.
+
+Specifications:
+Brand: PakBuy
+Type: Knee Support Brace
+Design: Open Patella
+Closure: Hook & Loop Straps
+Quantity: 1 Piece
+
+Suitable for everyday knee support. It does not cure injuries or medical conditions. Consult a healthcare professional for persistent pain or swelling.`
+},
+  {
+    id: 4,
+    name: "Daily Wellness Bottle",
+    category: "Health",
+    price: 1099,
+    oldPrice: 1399,
+    stock: true,
+    image: "https://placehold.co/600x600/e8f3f4/222?text=Wellness+Bottle"
+  },
+  {
+    id: 5,
+    name: "Travel Organizer Bag",
+    category: "Lifestyle",
+    price: 1399,
+    oldPrice: 1799,
+    stock: true,
+    image: "https://placehold.co/600x600/f4efe7/222?text=Organizer+Bag"
+  },
+  {
+    id: 6,
+    name: "Body Care Brush",
+    category: "Beauty",
+    price: 699,
+    oldPrice: 899,
+    stock: true,
+    image: "https://placehold.co/600x600/f6e9e9/222?text=Body+Brush"
+  },
+  {
+    id: 7,
+    name: "Posture Support Belt",
+    category: "Health",
+    price: 1799,
+    oldPrice: 2299,
+    stock: true,
+    image: "https://placehold.co/600x600/e9eef5/222?text=Posture+Belt"
+  },
+  {
+    id: 8,
+    name: "Multi-Purpose Cleaning Tool",
+    category: "Household",
+    price: 799,
+    oldPrice: 999,
+    stock: true,
+    image: "https://placehold.co/600x600/edf2f7/222?text=Cleaning+Tool"
+  }
+];
+
+
+// ===============================
+// BLOG POSTS
+// ===============================
+
+const blogs = [
+  {
+    title: "How to Choose Useful Fitness Products",
+    category: "Fitness",
+    text: "A simple guide to checking size, material, comfort and usefulness before buying fitness accessories.",
+    image: "https://placehold.co/900x500/e8eef7/222?text=Fitness+Guide"
+  },
+  {
+    title: "Beauty Products: What to Check Before Buying",
+    category: "Beauty",
+    text: "Check ingredients, usage instructions and product information before making a purchase.",
+    image: "https://placehold.co/900x500/f3e8ee/222?text=Beauty+Guide"
+  },
+  {
+    title: "Smart Household Shopping Guide",
+    category: "Household",
+    text: "Choose household products based on durability, usefulness and value.",
+    image: "https://placehold.co/900x500/edf4e8/222?text=Home+Guide"
+  }
+];
+
+
+// ===============================
+// CART
+// ===============================
+
+let cart = JSON.parse(
+  localStorage.getItem("pakbuyCart") || "[]"
+);
+
+
+// ===============================
+// MONEY FORMAT
+// ===============================
+
+function money(amount) {
+  return "PKR " + Number(amount).toLocaleString("en-PK");
+}
+
+
+// ===============================
+// SAVE CART
+// ===============================
+
+function saveCart() {
+  localStorage.setItem(
+    "pakbuyCart",
+    JSON.stringify(cart)
+  );
+
+  renderCart();
+  renderCheckout();
+  updateCartCount();
+}
+
+
+// ===============================
+// CART COUNT
+// ===============================
+
+function updateCartCount() {
+
+  const countElement =
+    document.getElementById("cart-count");
+
+  if (!countElement) return;
+
+  const totalItems = cart.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+
+  countElement.textContent = totalItems;
+}
+
+
+// ===============================
+// TOAST MESSAGE
+// ===============================
+
+function showToast(message) {
+
+  const toast =
+    document.getElementById("toast");
+
+  if (!toast) return;
+
+  toast.textContent = message;
+
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2200);
+}
+
+
+// ===============================
+// ADD TO CART
+// ===============================
+
+function addToCart(productId) {
+
+  const product =
+    products.find(p => p.id === productId);
+
+  if (!product) return;
+
+  const existing =
+    cart.find(item => item.id === productId);
+
+  if (existing) {
+    existing.quantity++;
+  } else {
+    cart.push({
+      id: productId,
+      quantity: 1
+    });
+  }
+
+  saveCart();
+
+  if (typeof fbq === "function") {
+    fbq("track", "AddToCart", {
+      content_ids: [String(product.id)],
+      content_name: product.name,
+      content_type: "product",
+      value: product.price,
+      currency: "PKR"
+    });
+  }
+
+  showToast(
+    product.name + " added to cart."
+  );
+}
+
+
+// ===============================
+// CHANGE QUANTITY
+// ===============================
+
+function changeQuantity(productId, change) {
+
+  const item =
+    cart.find(item => item.id === productId);
+
+  if (!item) return;
+
+  item.quantity += change;
+
+  if (item.quantity <= 0) {
+
+    cart = cart.filter(
+      item => item.id !== productId
+    );
+
+  }
+
+  saveCart();
+}
+
+
+// ===============================
+// REMOVE PRODUCT
+// ===============================
+
+function removeFromCart(productId) {
+
+  cart = cart.filter(
+    item => item.id !== productId
+  );
+
+  saveCart();
+
+  showToast("Product removed from cart.");
+}
+
+
+// ===============================
+// CATEGORY SECTION
+// ===============================
+
+function renderCategories() {
+
+  const categoryGrid =
+    document.getElementById("category-grid");
+
+  if (!categoryGrid) return;
+
+  const categories = [
+    {
+      name: "Beauty",
+      icon: "✨"
+    },
+    {
+      name: "Health",
+      icon: "❤️"
+    },
+    {
+      name: "Fitness",
+      icon: "💪"
+    },
+    {
+      name: "Lifestyle",
+      icon: "🌿"
+    },
+    {
+      name: "Household",
+      icon: "🏠"
+    }
+  ];
+
+  categoryGrid.innerHTML =
+    categories.map(category => `
+
+      <button
+        class="category-card"
+        onclick="selectCategory('${category.name}')"
+      >
+
+        <span class="category-icon">
+          ${category.icon}
+        </span>
+
+        <span>
+          ${category.name}
+        </span>
+
+      </button>
+
+    `).join("");
+}
+
+
+// ===============================
+// SELECT CATEGORY
+// ===============================
+
+function selectCategory(category) {
+
+  const filter =
+    document.getElementById("category-filter");
+
+  if (filter) {
+
+    filter.value = category;
+
+    renderProducts();
+
+  }
+
+  location.hash = "shop";
+}
+
+
+// ===============================
+// PRODUCTS
+// ===============================
+
+function renderProducts() {
+
+  const productGrid =
+    document.getElementById("product-grid");
+
+  if (!productGrid) return;
+
+  const search =
+    document.getElementById("search");
+
+  const categoryFilter =
+    document.getElementById("category-filter");
+
+  const sort =
+    document.getElementById("sort");
+
+  const searchText =
+    search ? search.value.toLowerCase().trim() : "";
+
+  const selectedCategory =
+    categoryFilter ? categoryFilter.value : "all";
+
+  const sortValue =
+    sort ? sort.value : "default";
+
+
+  let filteredProducts =
+    products.filter(product => {
+
+      const matchesSearch =
+        (
+          product.name +
+          " " +
+          product.category
+        )
+        .toLowerCase()
+        .includes(searchText);
+
+      const matchesCategory =
+        selectedCategory === "all" ||
+        product.category === selectedCategory;
+
+      return (
+        matchesSearch &&
+        matchesCategory
+      );
+
+    });
+
+
+  // Sort by price
+
+  if (sortValue === "low") {
+
+    filteredProducts.sort(
+      (a, b) => a.price - b.price
+    );
+
+  }
+
+  if (sortValue === "high") {
+
+    filteredProducts.sort(
+      (a, b) => b.price - a.price
+    );
+
+  }
+
+
+  const noProducts =
+    document.getElementById("no-products");
+
+  if (noProducts) {
+
+    noProducts.style.display =
+      filteredProducts.length
+        ? "none"
+        : "block";
+
+  }
+
+
+  productGrid.innerHTML =
+    filteredProducts.map(product => {
+
+      const discount =
+        Math.round(
+          (1 - product.price / product.oldPrice) * 100
+        );
+
+      return `
+
+        <article class="product-card">
+
+          <div class="product-image-wrapper">
+
+            <span class="discount-badge">
+              ${discount}% OFF
+            </span>
+
+           <img
+    class="product-image"
+    src="${product.image}"
+    alt="${product.name}"
+    onclick="openProductGallery(${product.id})"
+    style="cursor: zoom-in;"
+>
+
+          </div>
+
+
+          <div class="product-info">
+
+            <span class="product-category">
+              ${product.category}
+            </span>
+
+            <h3 class="product-title">
+              ${product.name}
+            </h3>
+
+
+            <div class="product-price">
+
+              ${money(product.price)}
+
+              <span class="old-price">
+                ${money(product.oldPrice)}
+              </span>
+
+            </div>
+
+
+            <div class="stock">
+
+              ${product.stock
+                ? "✓ In Stock"
+                : "✕ Out of Stock"}
+
+            </div>
+
+
+            <div class="product-buttons">
+
+              <button
+                class="btn"
+                onclick="addToCart(${product.id})"
+              >
+                Add to Cart
+              </button>
+
+
+              <button
+                class="btn secondary"
+                onclick="
+                  addToCart(${product.id});
+                  location.hash='cart';
+                "
+              >
+                Buy Now
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+      `;
+
+    }).join("");
+}
+
+
+// ===============================
+// BLOG
+// ===============================
+
+function renderBlogs() {
+
+  const blogGrid =
+    document.getElementById("blog-grid");
+
+  if (!blogGrid) return;
+
+
+  blogGrid.innerHTML =
+    blogs.map(blog => `
+
+      <article class="blog-card">
+
+        <img
+          class="blog-image"
+          src="${blog.image}"
+          alt="${blog.title}"
+        >
+
+
+        <div class="blog-content">
+
+          <span class="blog-category">
+            ${blog.category}
+          </span>
+
+          <h3>
+            ${blog.title}
+          </h3>
+
+          <p>
+            ${blog.text}
+          </p>
+
+          <a
+            href="#shop"
+            class="read-more"
+          >
+            Related Products →
+          </a>
+
+        </div>
+
+      </article>
+
+    `).join("");
+}
+
+
+// ===============================
+// CART TOTAL
+// ===============================
+
+function getCartTotal() {
+
+  return cart.reduce(
+    (total, item) => {
+
+      const product =
+        products.find(
+          p => p.id === item.id
+        );
+
+      if (!product) return total;
+
+      return total +
+        product.price * item.quantity;
+
+    },
+    0
+  );
+}
+// ===============================
+// DELIVERY CHARGES
+// ===============================
+
+const FREE_DELIVERY_LIMIT = 1000;
+const DELIVERY_CHARGE = 300;
+
+function getDeliveryCharge() {
+
+  const subtotal = getCartTotal();
+
+  if (subtotal === 0 || subtotal >= FREE_DELIVERY_LIMIT) {
+    return 0;
+  }
+
+  return DELIVERY_CHARGE;
+}
+
+function getGrandTotal() {
+  return getCartTotal() + getDeliveryCharge();
+}
+
+// ===============================
+// RENDER CART
+// ===============================
+
+function renderCart() {
+
+  const cartItems =
+    document.getElementById("cart-items");
+
+  const cartTotal =
+    document.getElementById("cart-total");
+
+  if (!cartItems) return;
+
+
+  if (cart.length === 0) {
+
+    cartItems.innerHTML = `
+      <div class="empty-cart">
+        <h3>Your cart is empty</h3>
+        <p>Add some products to your cart.</p>
+        <a href="#shop" class="btn">
+          Start Shopping
+        </a>
+      </div>
+    `;
+
+    if (cartTotal) {
+      cartTotal.textContent = money(0);
+    }
+
+    return;
+  }
+
+
+  cartItems.innerHTML =
+    cart.map(item => {
+
+      const product =
+        products.find(
+          p => p.id === item.id
+        );
+
+      if (!product) return "";
+
+
+      return `
+
+        <div class="cart-item">
+
+          <img
+            class="cart-item-image"
+            src="${product.image}"
+            alt="${product.name}"
+          >
+
+
+          <div>
+
+            <h3 class="cart-item-name">
+              ${product.name}
+            </h3>
+
+            <p class="cart-item-price">
+              ${money(product.price)}
+            </p>
+
+
+            <div class="quantity-control">
+
+              <button
+                onclick="changeQuantity(${product.id}, -1)"
+              >
+                −
+              </button>
+
+              <span>
+                ${item.quantity}
+              </span>
+
+              <button
+                onclick="changeQuantity(${product.id}, 1)"
+              >
+                +
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <strong>
+            ${money(
+              product.price *
+              item.quantity
+            )}
+          </strong>
+
+
+          <button
+            class="remove-btn"
+            onclick="removeFromCart(${product.id})"
+          >
+            Remove
+          </button>
+
+        </div>
+
+      `;
+
+    }).join("");
+
+
+  const subtotal = getCartTotal();
+  const delivery = getDeliveryCharge();
+
+  cartItems.innerHTML += `
+    <div class="cart-summary-lines">
+      <div class="summary-row">
+        <span>Subtotal</span>
+        <strong>${money(subtotal)}</strong>
+      </div>
+      <div class="summary-row">
+        <span>Delivery Charges</span>
+        <strong>${delivery === 0 ? "FREE" : money(delivery)}</strong>
+      </div>
+      ${delivery > 0
+        ? `<p class="free-delivery-note">Add ${money(FREE_DELIVERY_LIMIT - subtotal)} more for FREE delivery.</p>`
+        : ""}
+    </div>
+  `;
+
+  if (cartTotal) {
+    cartTotal.textContent = money(getGrandTotal());
+  }
+}
+
+
+// ===============================
+// CHECKOUT SUMMARY
+// ===============================
+
+function renderCheckout() {
+
+  const summary = document.getElementById("checkout-summary");
+
+  if (!summary) return;
+
+  if (cart.length === 0) {
+    summary.innerHTML = `<p class="co-empty">Your cart is empty.</p>`;
+    return;
+  }
+
+  let html = "";
+
+  cart.forEach(item => {
+
+    const product = products.find(p => p.id === item.id);
+
+    if (!product) return;
+
+    html += `
+      <div class="co-item">
+        <div class="co-thumb">
+          <img src="${product.image}" alt="${product.name}">
+          <span class="co-qty">${item.quantity}</span>
+        </div>
+        <div class="co-name">${product.name}</div>
+        <div class="co-price">${money(product.price * item.quantity)}</div>
+      </div>
+    `;
+  });
+
+  const delivery = getDeliveryCharge();
+
+  html += `
+    <div class="co-line">
+      <span>Subtotal</span>
+      <span>${money(getCartTotal())}</span>
+    </div>
+
+    <div class="co-line">
+      <span>Shipping</span>
+      <span>${delivery === 0 ? "FREE" : money(delivery)}</span>
+    </div>
+
+    ${delivery > 0
+      ? `<p class="co-note">Add ${money(FREE_DELIVERY_LIMIT - getCartTotal())} more for FREE delivery.</p>`
+      : ""}
+
+    <div class="co-total">
+      <span>Total</span>
+      <strong>${money(getGrandTotal())}</strong>
+    </div>
+  `;
+
+  summary.innerHTML = html;
+}
+
+
+// ===============================
+// WHATSAPP
+// ===============================
+
+function createWhatsAppLink(message) {
+
+  return (
+    "https://wa.me/" +
+    WHATSAPP_NUMBER +
+    "?text=" +
+    encodeURIComponent(message)
+  );
+
+}
+
+
+// ===============================
+// CHECKOUT FORM
+// ===============================
+
+// Safe reader: missing field never breaks the order button
+function getFieldValue(id) {
+  const el = document.getElementById(id);
+  return el && el.value ? el.value.trim() : "";
+}
+
+
+const checkoutForm =
+  document.getElementById(
+    "checkout-form"
+  );
+
+
+if (checkoutForm) {
+
+  checkoutForm.addEventListener(
+    "submit",
+    function(event) {
+
+      event.preventDefault();
+
+
+      if (cart.length === 0) {
+
+        showToast(
+          "Please add a product first."
+        );
+
+        return;
+      }
+
+
+      const name =
+        getFieldValue("customer-name");
+
+
+      const phone =
+        getFieldValue("customer-phone");
+
+
+      const email =
+        getFieldValue("customer-email");
+
+
+      const city =
+        getFieldValue("customer-city");
+
+
+      const address =
+        getFieldValue("customer-address");
+
+
+      const payment =
+        getFieldValue("payment-method");
+
+
+      let productsText = "";
+
+
+      cart.forEach(item => {
+
+        const product =
+          products.find(
+            p => p.id === item.id
+          );
+
+        if (!product) return;
+
+
+        productsText +=
+          `${product.name} x ${item.quantity} = ${money(
+            product.price * item.quantity
+          )}\n`;
+
+      });
+
+
+      const message =
+
+`New PakBuy Order
+
+Name: ${name}
+
+Phone: ${phone}
+
+Email: ${email || "Not provided"}
+
+City: ${city}
+
+Address: ${address}
+
+Payment: ${payment}
+
+Products:
+
+${productsText}
+
+Subtotal: ${money(getCartTotal())}
+
+Delivery: ${getDeliveryCharge() === 0 ? "FREE" : money(getDeliveryCharge())}
+
+Total: ${money(getGrandTotal())}`;
+
+
+      if (typeof fbq === "function") {
+        fbq("track", "Purchase", {
+          value: getGrandTotal(),
+          currency: "PKR"
+        });
+      }
+
+      const whatsappUrl = createWhatsAppLink(message);
+
+      const opened = window.open(whatsappUrl, "_blank");
+
+      if (!opened) {
+        window.location.href = whatsappUrl;
+      }
+
+    }
+  );
+
+}
+
+
+// ===============================
+// CONTACT FORM
+// ===============================
+
+const contactForm =
+  document.getElementById(
+    "contact-form"
+  );
+
+
+if (contactForm) {
+
+  contactForm.addEventListener(
+    "submit",
+    function(event) {
+
+      event.preventDefault();
+
+      showToast(
+        "Thank you! Your message has been received."
+      );
+
+      contactForm.reset();
+
+    }
+  );
+
+}
+
+
+// ===============================
+// SEARCH
+// ===============================
+
+const searchInput =
+  document.getElementById("search");
+
+
+if (searchInput) {
+
+  searchInput.addEventListener(
+    "input",
+    renderProducts
+  );
+
+}
+
+
+// ===============================
+// CATEGORY FILTER
+// ===============================
+
+const categoryFilter =
+  document.getElementById(
+    "category-filter"
+  );
+
+
+if (categoryFilter) {
+
+  categoryFilter.addEventListener(
+    "change",
+    renderProducts
+  );
+
+}
+
+
+// ===============================
+// SORT
+// ===============================
+
+const sortSelect =
+  document.getElementById("sort");
+
+
+if (sortSelect) {
+
+  sortSelect.addEventListener(
+    "change",
+    renderProducts
+  );
+
+}
+
+
+// ===============================
+// MOBILE MENU
+// ===============================
+
+const menuButton =
+  document.getElementById("menu-btn");
+
+const navigation =
+  document.getElementById("nav");
+
+
+if (menuButton && navigation) {
+
+  menuButton.addEventListener(
+    "click",
+    function() {
+
+      navigation.classList.toggle(
+        "open"
+      );
+
+    }
+  );
+
+}
+
+
+// ===============================
+// WHATSAPP BUTTON
+// ===============================
+
+const whatsappLink =
+  document.getElementById(
+    "whatsapp-link"
+  );
+
+
+if (whatsappLink) {
+
+  whatsappLink.href =
+    createWhatsAppLink(
+      "Hello PakBuy, I would like to know more about your products."
+    );
+
+}
+
+
+// ===============================
+// CURRENT YEAR
+// ===============================
+
+const yearElement =
+  document.getElementById("year");
+
+
+if (yearElement) {
+
+  yearElement.textContent =
+    new Date().getFullYear();
+
+}
+
+
+// ===============================
+// START WEBSITE
+// ===============================
+
+renderCategories();
+
+renderProducts();
+
+renderBlogs();
+
+renderCart();
+
+renderCheckout();
+
+updateCartCount();
+// ===============================
+// PAKBUY PRODUCT IMAGE GALLERY
+// ===============================
+
+let currentGalleryImages = [];
+let currentGalleryIndex = 0;
+
+function openProductGallery(productId) {
+
+    const product = products.find(p => p.id === productId);
+
+    if (!product) return;
+
+    currentGalleryImages = product.images || [product.image];
+
+    currentGalleryIndex = 0;
+
+    document.getElementById("gallery-title").textContent = product.name;
+
+    document.getElementById("product-gallery").classList.add("active");
+
+    showGalleryImage();
+}
+
+function showGalleryImage() {
+
+    const mainImage = document.getElementById("gallery-main-image");
+
+    const thumbnails = document.getElementById("gallery-thumbnails");
+
+    mainImage.src = currentGalleryImages[currentGalleryIndex];
+
+    thumbnails.innerHTML = currentGalleryImages.map((image, index) => `
+
+        <img
+            src="${image}"
+            class="gallery-thumbnail ${index === currentGalleryIndex ? "selected" : ""}"
+            onclick="selectGalleryImage(${index})"
+            alt="Product thumbnail"
+        >
+
+    `).join("");
+}
+
+function selectGalleryImage(index) {
+
+    currentGalleryIndex = index;
+
+    showGalleryImage();
+}
+
+function nextGalleryImage() {
+
+    currentGalleryIndex =
+        (currentGalleryIndex + 1) % currentGalleryImages.length;
+
+    showGalleryImage();
+}
+
+function previousGalleryImage() {
+
+    currentGalleryIndex =
+        (currentGalleryIndex - 1 + currentGalleryImages.length)
+        % currentGalleryImages.length;
+
+    showGalleryImage();
+}
+
+function closeProductGallery() {
+
+    document.getElementById("product-gallery").classList.remove("active");
+}
+
+document.getElementById("gallery-close").addEventListener(
+    "click",
+    closeProductGallery
+);
+
+document.getElementById("gallery-next").addEventListener(
+    "click",
+    nextGalleryImage
+);
+
+document.getElementById("gallery-prev").addEventListener(
+    "click",
+    previousGalleryImage
+);
+
+document.getElementById("product-gallery").addEventListener(
+    "click",
+    function(event) {
+
+        if (event.target.id === "product-gallery") {
+            closeProductGallery();
+        }
+
+    }
+);
+
+// ===============================
+// EASYPAISA INFO SHOW/HIDE
+// ===============================
+
+const paymentSelect = document.getElementById("payment-method");
+const easypaisaInfo = document.getElementById("easypaisa-info");
+
+if (paymentSelect && easypaisaInfo) {
+
+  function toggleEasypaisaInfo() {
+    easypaisaInfo.classList.toggle(
+      "show",
+      paymentSelect.value === "Easypaisa"
+    );
+  }
+
+  paymentSelect.addEventListener("change", toggleEasypaisaInfo);
+  toggleEasypaisaInfo();
+}
